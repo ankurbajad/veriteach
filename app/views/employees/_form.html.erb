@@ -1,0 +1,11 @@
+<section class="form-container">
+  <div class="container">
+    <div class="row">
+      <div class="panel panel-primary">
+        <%= nested_form_for(build_employee(@employee)) do |f| %>
+          <%= render 'employees/steps/current_step', f: f %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

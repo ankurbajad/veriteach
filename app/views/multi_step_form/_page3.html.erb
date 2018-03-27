@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-4">
+    <div class="form-wrapper">
+      <ul class="form-step-list">
+        <li>3/3 Complete
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: 100%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </li>
+        <li>1. Candidate Info</li>
+        <li>2. Prev Employer Info</li>
+        <li><b>3. Acceptance/Submission</b></li>
+      </ul>  
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-wrapper">
+      <div class="panel-heading">TERMS OF ACCEPTANCE AND SIGNATURE</div>
+      <p class="text-center sub-title">I, the [applicant, requestor, etc.] for this verification request, warrant the truthfulness of the information provided in this application.</p>
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-5">
+            <%= f.label :electronic_signature %>
+          </div>
+          <div class="col-md-7">
+            <%= f.text_field :electronic_signature, :class => 'form-control contidate-name', :placeholder => 'Candidates Name' %>
+            <small>Please type first and last name</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">
+            *Acceptance Checkbox
+          </div>
+          <div class="col-md-7">
+            
+          </div>
+        </div>
+      </div>
+      </br>
+      <div class="clearfix"></div>
+      <div class="form-group">
+        <span class="check-box">
+          <input type="checkbox" id='check'/>
+          </span>
+          <div class="extra-wrap">
+            <label for="check" class="checkdata">I understand that checking this box constitutes a legal signature confirming that I acknowledge and agree to the above</label>
+            <p><a href="javascript:void(0)" class="terms-conditions">Terms of Acceptance</a></p>
+          </div> 
+      </div>
+    </div>
+  </div>
+</div>

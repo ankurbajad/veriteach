@@ -1,0 +1,127 @@
+<section class="form-container">
+  <div class="container">
+    <div class="row justify-content-md-center">
+      <div class="col-md-6">
+        <div class="form-wrapper panel panel-primary">
+          <%= nested_form_for(build_user(@user), as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%#= devise_error_messages! %>
+
+            <%= render 'multi_step_form/current_step', f: f %>
+
+          <% end %>
+
+          <%#= render "users/shared/links" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<style type="text/css">
+  .form-container {
+    padding: 50px 0px;
+    background-color: #f2f3f8;
+  }
+  .form-wrapper{
+    border: 1px solid #428bca;
+    padding: 0 0 20px;
+    background-color: #fff;
+  }
+  .form-wrapper .form-group{
+    position: relative;
+    margin: 0 20px 1rem;
+  }
+  .form-wrapper .form-group .form-icon {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 20px;
+    color: #428bca;
+  }
+  .form-wrapper .form-group input, .form-wrapper .form-group, textarea .form-wrapper .form-group select{
+    padding-left: 35px;
+    min-height: 45px;
+  }
+  .form-wrapper .form-group input:focus{
+    box-shadow: none;
+    outline-color: #ced4da;
+    border-color: #ced4da;
+  }
+  .form-wrapper .form-group.password-field .form-icon{
+    top: 30px;
+  }
+  .terms-conditions{
+      text-align: left;
+      text-decoration: underline;
+      display: block;
+  }
+  .terms-conditions:hover{
+    text-decoration: none;
+  }
+  .submit-btn {
+    min-width: 250px;
+    margin: 0 auto;
+    display: block;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  .panel-primary .panel-heading {
+    color: #fff;
+    background-color: #428bca;
+    border-color: #428bca;
+    padding: 12px 20px;
+    font-size: 24px;
+    text-align: center;
+    line-height: normal;
+  }
+  .sub-title{
+    margin-top: 15px;
+  }
+  .check-box{
+    float: left;
+    overflow: hidden;
+    width: 30px;
+  }
+  .extra-wrap{
+    overflow: hidden;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  .check-box input[type="checkbox"]{
+    min-height: auto;
+  }
+  .control-label {
+      float: left;
+      width: 160px;
+      padding-top: 5px;
+      text-align: right;
+  }
+  .form-horizontal .controls {
+      margin-left: 180px;
+  }
+  .contidate-name{
+    padding-left: 10px !important;
+  }
+  .add-user{
+    font-size: 40px;
+    float: right;
+    margin-right: 20px;
+  }
+</style>
+<script type="text/javascript">
+  $('.add-user').on('click', function(){ 
+    $('.district-form-container').slideUp(2000); 
+  });
+
+  $('h1').on('click', function(){
+    $('.district-form-container').slideDown(2000);
+    // $('p').hide();
+  });
+
+  // $(function(){
+  //   var user_street_address = $('#user_street_address').val();
+  //   var user_state          = $('#state').val();
+  //   var user_city           = $('#user_city').val();
+  //   var user_zip_code       = $('#user_zip_code').val();
+  // })
+</script>

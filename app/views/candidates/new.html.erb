@@ -1,0 +1,168 @@
+<section class="form-container">
+  <div class="container">
+    <div class="row">
+      <div class="panel panel-primary">
+        <%= nested_form_for(build_candidate(@candidate)) do |f| %>
+          <%= render 'multi_step_form/current_step', f: f %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>
+<script type="text/javascript">
+  var form_count = $('form .fields').length;
+
+  if(form_count > 0){
+    $(".fields").attr('id', 'form' + form_count);
+  }
+
+  $(document).on('nested:fieldAdded', function(event){
+    var next_form_count = $('form .fields').length;
+    var panel_heading   = "Employer " + (next_form_count -1);
+    var previous_form   = next_form_count -1;
+
+    $(event.field[0]).attr('id', 'form' + next_form_count);
+    $('.sub-title').append('<div class="form-group form-custom-label" id="'+previous_form+'"><div class="row"><div class="col-md-3"><label>'+ panel_heading +'</label></div><div class="col-md-9"><div class="e-form-1" id="e-form-1"><i class="fa fa-caret-right toggle-arrow"></i><input type="text" name="fname" value="Norway"  class="form-control" readonly><br></div></div></div></div>');
+    $('#form' + previous_form).slideUp(500);
+  });
+
+  $(document).on('click', '.form-custom-label', function(){
+    var current_obeject_value = parseInt($(this).attr('id'));
+    var next_form = $('form .fields').length;
+    $('#form' + next_form).hide();
+    $('#form' +  $(this).attr('id')).slideDown(500);
+  });
+
+  $('.step_0').click(function() {
+    var candidate_name = $('#candidate_name').val();
+    var candidate_social_security = $('#candidate_social_security').val();
+    var candidate_dob = $('#candidate_dob').val();
+    var candidate_email = $('#candidate_email').val();
+    var valid = validateEmail(candidate_email);
+    var candidate_address = $('#candidate_address').val();
+    var candidate_state =  $('#candidate_state').val();
+    var candidate_city = $('#candidate_city').val();
+    var candidate_zip_code = $('#candidate_zip_code').val();
+
+    if (candidate_name == ""){
+      $("#candidate_name_error").html("*Please enter name").show().fadeOut(5000);
+      return false;
+    }
+
+    else if (candidate_social_security == ""){
+      $("#candidate_social_security_error").html("*Please enter social security").show().fadeOut(5000);
+      return false;
+    }
+
+    else if (candidate_dob == ""){
+      $("#candidate_dob_error").html("*Please select date of birth").show().fadeOut(5000);
+      return false;
+    }
+
+    else if (!valid) {
+      if(candidate_email == ""){
+        $(".candidate_email_error").html("*Please enter email").show().fadeOut(5000);
+        return false;
+      }
+      else{
+        $(".candidate_email_error").html("*Please enter a valid email").show().fadeOut(5000);
+        return false;
+      }
+    }
+
+    else if (candidate_address == ""){
+      $("#candidate_address_error").html("*Please enter street address").show().fadeOut(5000);
+      return false;
+    }
+
+    else if (candidate_state == ""){
+      $("#candidate_state_error").html("*Please select state").show().fadeOut(5000);
+      return false;
+    }
+
+    else if (candidate_city == ""){
+      $("#candidate_city_error").html("*Please select state").show().fadeOut(5000);
+      return false;
+    }
+    else if (candidate_zip_code == ""){
+      $("#candidate_zip_code_error").html("*Please select state").show().fadeOut(5000);
+      return false;
+    }
+  });
+
+  $('.step_1').click(function() {
+    var value = $('.district_email').val();
+    var district_name = $('.district_name').val();
+    var district_nces = $('.district_nces').val();
+    var district_contact = $('.district_contact').val();
+    var district_phone_number = $(".district-phone-number").val();
+    var valid = validateEmail(value);
+    var district_street_address = $(".district_street_address").val();
+    var district_state = $(".district_state").val();
+    var district_city = $(".district_city").val();
+    var district_zip_code = $(".district_zip_code").val();
+
+    if( district_name == "" ){
+      $(".district_name_error").html("*Please enter district name").show().fadeOut(5000);
+      return false;
+    }
+
+    else if( district_nces == "" ){
+      $(".district_nces_error").html("*Please enter NCES").show().fadeOut(5000);
+      return false;
+    }
+
+    else if( district_contact == "" ){
+      $(".district_contact_error").html("*Please enter district contact").show().fadeOut(5000);
+      return false;
+    }
+
+    else if (value == "" && !valid ){
+      $(".district_email_error").html("*Please enter email").show().fadeOut(5000);
+      return false;
+    }
+    else if (value != "" && !valid) {
+      $(".district_email_error").html("*Please enter a valid email").show().fadeOut(5000);
+      return false;
+    }
+
+    else if(district_phone_number == "") {
+      $(".errmsg").html("*Please enter phone number").show().fadeOut(5000);
+      return false;
+    }
+
+    else if(district_street_address == "") {
+      $(".district_street_address_error").html("*Please enter street address").show().fadeOut(5000);
+      return false;
+    }
+
+    else if(district_state == "") {
+      $(".district_state_error").html("*Please select state").show().fadeOut(5000);
+      return false;
+    }
+
+    else if(district_city == "") {
+      $(".district_city_error").html("*Please enter city").show().fadeOut(5000);
+      return false;
+    }
+
+    else if(district_zip_code == "") {
+      $(".district_zip_code_error").html("*Please enter zip code").show().fadeOut(5000);
+      return false;
+    }
+  });
+
+  var validateEmail = function(elementValue) {
+    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    return emailPattern.test(elementValue);
+  }
+
+  $(".district-phone-number").keypress(function (e) {
+    //if not numeric, then it don't let you type
+    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+      //display error message
+      $(".errmsg").html("*Digits Only").show().fadeOut(5000);
+      return false;
+    }
+  });
+</script>

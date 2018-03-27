@@ -1,0 +1,199 @@
+  body{
+    font-family: 'Raleway', sans-serif;
+  }
+  .form-container {
+    padding: 50px 0px;
+    background-color: #033076;
+  }
+  .form-wrapper{
+    border: none;
+    padding: 0 0 20px;
+    background-color: #fff;
+  }
+  .form-wrapper .form-group{
+    position: relative;
+    margin: 0 20px 1rem;
+  }
+  .form-wrapper .form-group .form-icon {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 20px;
+    color: #033076;
+  }
+  .form-wrapper .form-group input, .form-wrapper .form-group textarea, .form-wrapper .form-group select{
+    padding-left: 35px;
+    min-height: 45px;
+  }
+  .form-wrapper .form-group input:focus{
+    box-shadow: none;
+    outline-color: #ced4da;
+    border-color: #ced4da;
+  }
+  .form-wrapper .form-group.password-field .form-icon{
+    top: 30px;
+  }
+
+  .form-wrapper .form-group.salary-inputs input {
+    min-height: auto;
+  }
+
+  .form-wrapper .form-group.salary-inputs span{
+    margin-right: 30px;
+  }
+
+  .terms-conditions{
+    text-align: left;
+    text-decoration: underline;
+    display: block;
+    color: #033076;
+  }
+  .terms-conditions:hover{
+    text-decoration: none;
+  }
+  .submit-btn {
+    min-width: 250px;
+    margin: 0 auto !important;
+    display: block !important;
+    font-size: 24px !important;
+    text-transform: uppercase;
+  }
+  .panel-primary .panel-heading {
+    color: #033076;
+    background-color: #fff;
+    border-color: #fff;
+    padding: 12px 0;
+    font-size: 24px;
+    text-align: center;
+    line-height: normal;
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+  }
+  .sub-title{
+    margin-top: 15px;
+    padding: 0 15px;
+  }
+  .check-box{
+    float: left;
+    overflow: hidden;
+    width: 30px;
+  }
+  .extra-wrap{
+    overflow: hidden;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  .check-box input[type="checkbox"]{
+    min-height: auto;
+  }
+  .control-label {
+      float: left;
+      width: 160px;
+      padding-top: 5px;
+      text-align: right;
+  }
+  .form-horizontal .controls {
+      margin-left: 180px;
+  }
+  .contidate-name{
+    padding-left: 10px !important;
+  }
+  
+  .header{
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+  }
+ 
+  .e-form-1{
+    position: relative;
+  }
+  .toggle-arrow{
+    position: absolute;
+    right: 5px;
+    font-size: 35px !important;
+    width: 100%;
+    text-align: right;
+  }
+  .district_name_error, .district_nces_error, .district_contact_error,  .district_email_error, .errmsg, .district_street_address_error, .district_state_error, .district_city_error, .district_zip_code_error{
+    color: red;
+    float: right;
+  }
+  #candidate_name_error, #candidate_social_security_error, #candidate_dob_error, .candidate_email_error, #candidate_address_error, #candidate_state_error, #candidate_city_error, #candidate_zip_code_error{
+    color: red;
+    float: right;
+  }
+
+.form-step-list{
+	margin: 0;
+	padding: 10px;
+	list-style: none;
+	width: 100%;
+}
+.form-step-list li{
+	display: block;
+	padding: 2px 10px;
+	font-size: 16px;
+	color: #333;
+}
+.form-wrapper-bottom {
+    padding: 0 0 20px;
+    background-color: #fff;
+}
+.form-container .panel-primary, .form-container .row, .form-container .new_candidate{
+	width: 100%;
+}
+.add_nested_fields {
+    background-color: #033076;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 16px;
+    padding: 5px 15px;
+    float: right;
+    margin-right: 20px;
+    font-family: inherit;
+    font-family: 'Raleway', sans-serif;
+}
+.add_nested_fields:hover {
+    color: #fff;
+    text-decoration: none;
+    
+}
+.add-user span{
+	padding-left: 5px;
+	font-family: 'Raleway', sans-serif;
+	text-transform: capitalize;
+  }
+.e-form-1 .form-control:disabled, .e-form-1 .form-control[readonly]{
+	padding: 0.375rem 0.75rem !important;
+	background-color: #fff;
+	min-height: 40px;
+}
+.form-custom-label{
+	font-size: 14px;
+}
+.form-links {
+    min-height: 600px;
+    text-align: center;
+    padding-top: 50px;
+  }
+  .form-links h1{
+    color: #fff;
+    margin-bottom: 20px;
+  }
+  .form-links a {
+    display: inline-block;
+    color: #333;
+    background-color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px 15px;
+    margin-right: 10px;
+    text-decoration: none;
+  }
+  .form-links a:hover {
+    text-decoration: none;
+    background-color: #2adf2c;
+    color: #fff;
+  }

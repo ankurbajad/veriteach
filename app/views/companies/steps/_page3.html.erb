@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-4">
+    <div class="form-wrapper">
+      <ul class="form-step-list">
+        <li>3/4 Complete
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: 75%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </li>
+        <li>1. Requester Info</li>
+        <li>2. Email verification</li>
+        <li><b>3. Employee Info</b></li>
+        <li>4. Acceptance/Submission</li>
+      </ul>  
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-wrapper">
+      <div class="panel-heading">Employee Information</div>
+      <p class="text-center sub-title">Please complete the following Information</p>
+      <%= form_tag companies_path, remote: true do %>
+        <div class="form-group">
+          <div class="form-icon"><i class="fa fa-user"></i></div>
+          <%= hidden_field_tag :step, "third" %>
+          <%= text_field_tag :name, session[:employee].present? ? session[:employee]["name"].present? ? session[:employee]["name"] : "" : "", :placeholder=> 'Employee Name', :class => 'form-control company_name', :id => 'employee_name' %>
+          <span id="employee_name_error"></span>
+        </div>
+        <div class="form-group">
+          <div class="form-icon"><i class="fa fa-file"></i></div>
+          <%= number_field_tag :social_security, session[:employee].present? ? session[:employee]["social_security"].present? ? session[:employee]["social_security"] : "" : "", :placeholder=> 'Last 4 Social Security #', :class => 'form-control', :id => 'employee_social_security', required: true, onkeydown: "limit(this, 9);", onkeyup: "limit(this, 9);" %>
+          <span id="employee_social_security_error"></span>
+        </div>
+        <div class="form-group">
+          <div class="form-icon"><i class="fa fa-envelope"></i></div>
+          <%= email_field_tag :email, session[:employee].present? ? session[:employee]["email"].present? ? session[:employee]["email"] : "" : "", :placeholder=> 'Employee Email Address', :class => 'form-control', :id => 'employee_email', required: true %>
+          <span class="employee_email_error"></span>
+        </div>
+        <div class="form-group">
+          <div class="form-icon"><i class="fa fa-phone"></i></div>
+          <%= number_field_tag :contact_number, session[:employee].present? ? session[:employee]["contact_number"].present? ? session[:employee]["contact_number"] : "" : "", :placeholder=> 'Employee Number', :class => 'form-control', :id => 'employee_contact_number' %>
+          <span id="employee_contact_number_error"></span>
+        </div>
+
+        <div class="form-group salary-inputs">
+          <b>
+            <%= label_tag :salary_inclusion %> </b><br />
+          <span>
+          <%= radio_button_tag 'salary_inclusion', 'yes' %>
+          <%= label_tag :salary_inclusion, 'Yes' %></span>
+          <span>
+          <%= radio_button_tag 'salary_inclusion', 'no', true %>
+          <%= label_tag :salary_inclusion, 'No'  %></span>
+        </div>
+
+        <div class="form-group salary-inputs">
+          <b>
+            <%= label_tag :document_retrieval %></b> <br />
+          <span>
+            <%= radio_button_tag 'document_retrieval', 'pick­up' %>
+          <%= label_tag :document_retrieval, 'Pick­up' %></span>
+          <span>
+            <%= radio_button_tag 'document_retrieval', 'email', :checked => true %>
+          <%= label_tag :document_retrieval, 'Email' %></span>
+          <span>
+            <%= radio_button_tag 'document_retrieval', 'mail' %>
+          <%= label_tag :document_retrieval, 'Mail' %></span>
+          <br />
+        </div>
+
+        <div class="form-group">
+          <span class="check-box">
+            <%= check_box_tag 'terms_condition', 'yes', true %>
+          </span>
+          <div class="extra-wrap">
+            <label for="check" class="checkdata">By selecting this box I consent to recieve electronic communications from Veriteach LLC. per the</label>
+            <p><a href="javascript:void(0)" class="terms-conditions">Terms & Conditions</a></p>
+          </div> 
+        </div>
+        <div class="field">
+          <%= submit_tag "Next", :class => "btn btn-success submit-btn" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

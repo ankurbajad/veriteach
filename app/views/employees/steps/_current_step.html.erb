@@ -1,0 +1,12 @@
+<%= f.hidden_field :current_step, value: f.object.current_step %>
+<%= render "employees/steps/page#{f.object.current_step + 1}", f: f %>
+<div class="row">
+	<div class="col-4"></div>
+  <div class="col-6">
+    <div class="form-wrapper-bottom">
+			<div class="field">
+			  <%= f.submit f.object.last_step? ? "Submit" : "Next", :class => "btn btn-success submit-btn step_#{f.object.current_step}" %>
+			</div>
+		</div>
+	</div>
+</div>

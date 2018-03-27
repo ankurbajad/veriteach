@@ -1,0 +1,129 @@
+/*body{
+    font-family: 'Raleway', sans-serif;
+  }
+  .form-container {
+    padding: 50px 0px;
+    background-color: #033076;
+  }
+  .form-wrapper{
+    border: 1px solid #428bca;
+    padding: 0 0 20px;
+    background-color: #fff;
+  }
+  .form-wrapper .form-group{
+    position: relative;
+    margin: 0 20px 1rem;
+  }
+  .form-wrapper .form-group .form-icon {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    font-size: 20px;
+    color: #033076;
+  }
+  .form-wrapper .form-group input, .form-wrapper .form-group textarea, .form-wrapper .form-group select{
+    padding-left: 35px;
+    min-height: 45px;
+  }
+  .form-wrapper .form-group input:focus{
+    box-shadow: none;
+    outline-color: #ced4da;
+    border-color: #ced4da;
+  }
+  .form-wrapper .form-group.password-field .form-icon{
+    top: 30px;
+  }
+
+  .form-wrapper .form-group.salary-inputs input {
+    min-height: auto;
+  }
+
+  .form-wrapper .form-group.salary-inputs span{
+    margin-right: 30px;
+  }
+
+  .terms-conditions{
+    text-align: left;
+    text-decoration: underline;
+    display: block;
+    color: #033076;
+  }
+  .terms-conditions:hover{
+    text-decoration: none;
+  }
+  .submit-btn {
+    min-width: 250px;
+    margin: 0 auto;
+    display: block;
+    font-size: 24px;
+    text-transform: uppercase;
+  }
+  .panel-primary .panel-heading {
+    color: #033076;
+    background-color: #fff;
+    border-color: #fff;
+    padding: 12px 0;
+    font-size: 28px;
+    text-align: center;
+    line-height: normal;
+    font-weight: 600;
+    font-family: 'Raleway', sans-serif;
+  }
+  .sub-title{
+    margin-top: 15px;
+  }
+  .check-box{
+    float: left;
+    overflow: hidden;
+    width: 30px;
+  }
+  .extra-wrap{
+    overflow: hidden;
+    vertical-align: top;
+    text-align: left;
+  }
+
+  .check-box input[type="checkbox"]{
+    min-height: auto;
+  }
+  .control-label {
+      float: left;
+      width: 160px;
+      padding-top: 5px;
+      text-align: right;
+  }
+  .form-horizontal .controls {
+      margin-left: 180px;
+  }
+  .contidate-name{
+    padding-left: 10px !important;
+  }
+  i.fa.fa-plus-circle.add-user{
+    font-size: 40px;
+    float: right;
+    margin-right: 20px;
+  }
+  .header{
+    background-color: #fff;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+  }
+ 
+  .e-form-1{
+    position: relative;
+  }
+  .toggle-arrow{
+    position: absolute;
+    right: 5px;
+    font-size: 45px;
+    width: 100%;
+    text-align: right;
+  }
+  .district_name_error, .district_nces_error, .district_contact_error,  .district_email_error, .errmsg, .district_street_address_error, .district_state_error, .district_city_error, .district_zip_code_error{
+    color: red;
+    float: right;
+  }
+  #candidate_name_error, #candidate_social_security_error, #candidate_dob_error, .candidate_email_error, #candidate_address_error, #candidate_state_error, #candidate_city_error, #candidate_zip_code_error{
+    color: red;
+    float: right;
+  }*/

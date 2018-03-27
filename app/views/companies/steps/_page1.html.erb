@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-4">
+    <div class="form-wrapper">
+      <ul class="form-step-list">
+        <li>1/4 Complete
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: 25%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </li>
+        <li><b>1. Requester Info</b></li>
+        <li>2. Email verification</li>
+        <li>3. Employee Info</li>
+        <li>4. Acceptance/Submission</li>
+      </ul>  
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-wrapper">
+      <div class="panel-heading">Requester Information</div>
+      <p class="text-center sub-title">Please enter information for each requestor</p>
+      <%= form_tag companies_path, remote: true do %>
+        <div class="district-form-container">
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-building"></i></div>
+            <%= hidden_field_tag :step, "first" %>
+            <%= text_field_tag :name, session[:company].present? ? session[:company]["name"].present? ? session[:company]["name"] : "" : "", :placeholder=> 'Company / District Name', :class => 'form-control company_name' %>
+            <span class="company_name_error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-file"></i></div>
+            <%= text_field_tag :contact_name, session[:company].present? ? session[:company]["contact_name"].present? ? session[:company]["contact_name"] : "" : "", :placeholder=> 'Contact Name', :class => 'form-control company_contact_name' %>
+            <span class="company_contact_name_error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-address-book"></i></div>
+            <%= email_field_tag :email, session[:company].present? ? session[:company]["email"].present? ? session[:company]["email"] : "" : "", :placeholder=> 'Contact Email Address', :class => 'form-control company_email', required: true %>
+            <span class="company_email_error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-phone"></i></div>
+            <%= number_field_tag :phone_number, session[:company].present? ? session[:company]["phone_number"].present? ? session[:company]["phone_number"] : "" : "", :placeholder=> 'Contact Phone Number', :class => 'form-control company_phone_number', required: true %>
+            <span class="company_phone_number_error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-envelope"></i></div>
+            <%= text_area_tag :street_address, session[:company].present? ? session[:company]["street_address"].present? ? session[:company]["street_address"] : "" : "", :placeholder=> 'Street Address', :class => 'form-control company-street-address' %>
+            <span class="company-street-address-error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-map-marker"></i></div>
+            <%= select_tag "state", options_for_select(User::SELECT_STATE_OPTION, session[:company].present? ? session[:company]["state"].present? ? session[:company]["state"] : "" : ""), :class => 'form-control company_state', :prompt => "Select state" %>
+            <span class="company_state_error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-map-marker"></i></div>
+            <%= text_field_tag :city, session[:company].present? ? session[:company]["city"].present? ? session[:company]["city"] : "" : "", :placeholder=> 'City', :class => 'form-control company_city' %>
+            <span class="company_city_error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-file"></i></div>
+            <%= number_field_tag :zip_code, session[:company].present? ? session[:company]["zip_code"].present? ? session[:company]["zip_code"] : "" : "", :placeholder=> 'Zip Code', :class => 'form-control company_zip_code' %>
+            <span class="company_zip_code_error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-comments"></i></div>
+            <%= text_area_tag :comments, session[:company].present? ? session[:company]["comments"].present? ? session[:company]["comments"] : "" : "", :placeholder=> 'Comments', :class => 'form-control company_comments' %>
+            <span class="company_comments"></span>
+          </div>
+        </div>
+        <div class="field">
+          <%= submit_tag "Next", :class => "btn btn-success submit-btn" %>
+        </div>
+
+      <% end %>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>

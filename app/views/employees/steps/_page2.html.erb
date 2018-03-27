@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-4">
+    <div class="form-wrapper">
+      <ul class="form-step-list">
+        <li>2/3 Complete
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: 67%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </li>
+        <li>1. Employee Info</li>
+        <li><b>2. Prev Employer Info</b></li>
+        <li>3. Acceptance/Submission</li>
+      </ul>  
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="form-wrapper">
+      <div class="panel-heading">Requester Information</div>
+      <p class="text-center sub-title">Please enter information for each requestor</p>
+
+      <%= f.fields_for :companies do |cf| %>
+        <div class="district-form-container">
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-building"></i></div>
+            <%= cf.text_field :name, :placeholder=>"Company / District Name", :class => 'form-control company_name'%>
+            <span class="company_name_error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-file"></i></div>
+            <%= cf.text_field :contact_name, :placeholder=>"Contact Name", :class => 'form-control company_contact_name' %>
+            <span class="company_contact_name_error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-address-book"></i></div>
+            <%= cf.email_field :email, :placeholder=>"Contact Email Address", :class => 'form-control company_email' %>
+            <span class="company_email_error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-phone"></i></div>
+            <%= cf.number_field :phone_number, :placeholder=>"Contact Phone Number", :class => 'form-control company_phone_number' %>
+            <span class="company_phone_number_error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-envelope"></i></div>
+            <%= cf.text_area :street_address, :placeholder=>"District Phone Number", :class => 'form-control company-street-address'%>
+            <span class="company-street-address-error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-map-marker"></i></div>
+            <%= cf.select :state, options_for_select(User::SELECT_STATE_OPTION), {:prompt => "Select state" }, :class => 'form-control company_state' %>
+            <span class="company_state_error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-map-marker"></i></div>
+            <%= cf.text_field :city, :placeholder=>"City", :class => 'form-control company_city' %>
+            <span class="company_city_error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-file"></i></div>
+            <%= cf.number_field :zip_code, :placeholder=>"Zip Code", :class => 'form-control company_zip_code' %>
+            <span class="company_zip_code_error"></span>
+          </div>
+
+          <div class="form-group">
+            <div class="form-icon"><i class="fa fa-comments"></i></div>
+            <%= cf.text_area :comments, :placeholder=>"Comments: ", :class => 'form-control company_comments' %>
+            <span class="company_comments"></span>
+          </div>
+        </div>
+      <% end %>
+
+      <p>
+        <%= f.link_to_add :companies do %>
+          <i class="fa fa-plus-circle add-user"><span>add request</span></i>
+        <% end %>  
+      </p>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</div>
