@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  insurance_day: MyString
+  insurance_from: MyString
+  insurance_to: MyString
+  health_state_insurance: MyString
+  insurance_option: MyString
+  hmp: MyString
+  hdp: MyString
+  family_coverage: MyString
+  tenure_status: MyString
+  district_id: 1
+
+two:
+  insurance_day: MyString
+  insurance_from: MyString
+  insurance_to: MyString
+  health_state_insurance: MyString
+  insurance_option: MyString
+  hmp: MyString
+  hdp: MyString
+  family_coverage: MyString
+  tenure_status: MyString
+  district_id: 1

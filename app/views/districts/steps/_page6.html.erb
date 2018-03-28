@@ -1,0 +1,182 @@
+<div class="row">
+  <div class="col-4">
+    <div class="form-wrapper">
+      <ul class="form-step-list">
+        <li>6/7 Complete
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: 85%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </li>
+        <li>1. District Employee Info</li>
+        <li>2. Email verification</li>
+        <li>3. District Info</li>
+        <li>4. Employment info</li>
+        <li>5. Performance Reviews</li>
+        <li><b>6. Insurance</b></li>
+        <li>7. Acceptance/Submit</li>
+      </ul>  
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="form-wrapper review-wrapper">
+      <div class="panel-heading">Insurance Information</div>
+      <p class="text-center sub-title">
+        Please enter health insurance info per state law for appropiate Department of Education.
+      </p>
+      <p class="text-center sub-title">(if applicable)</p>
+      
+      <%= form_tag districts_path, remote: true do %>
+        <div class="row justify-content-md-center">
+          <div class="col-12">
+            <div class="form-group">
+              <p class="sub-title">
+                The following is an accurate record of unused accumulated sick
+                leave accrued  and certified to the employee named in
+                accordance with applicable state laws:
+              </p>
+            </div>
+            <%= hidden_field_tag :step, "sixth" %>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-3">
+                  <div class="form-group">
+                    <div class="form-icon"><i class="fa fa-calendar"></i></div>
+                    <%= text_field_tag :insurance_day, session[:district_insurance].present? ? session[:district_insurance]["insurance_day"].present? ? session[:district_insurance]["insurance_day"] : "" : "", :placeholder=> 'Day', :class => 'form-control datepicker', required: true %>
+                  </div>  
+                </div>
+                <div class="col-9">
+                  <p class="sub-title">
+                    days of unused accumulated sick leave are herewith transferred for inclusion in the permanent record in the above name employee.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <div class="form-icon"><i class="fa fa-calendar"></i></div>
+              <%= text_field_tag :insurance_from, session[:district_insurance].present? ? session[:district_insurance]["insurance_from"].present? ? session[:district_insurance]["insurance_from"] : "" : "", :placeholder=> 'From', :class => 'form-control datepicker' %>
+              <p><small>*Date of last paycheck for employee</small></p>
+            </div>  
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <div class="form-icon"><i class="fa fa-calendar"></i></div>
+              <%= text_field_tag :insurance_to, session[:district_insurance].present? ? session[:district_insurance]["insurance_to"].present? ? session[:district_insurance]["insurance_to"] : "" : "", :placeholder=> 'To', :class => 'form-control datepicker' %>
+              <p><small>Date of last health benefit deductions</small></p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <p>State Health Insurance ­ Employee wass enrolled for:</p>
+            </div>  
+          </div>
+          <div class="col-6">
+            <div class="form-group salary-inputs">
+              <div class="border-box">
+                <center>
+                  <span>
+                  <%= radio_button_tag 'health_state_insurance', 'none', session[:district_insurance].present? ? session[:district_insurance]["health_state_insurance"] == "none" ? true : false : false %>
+                  <%= label_tag :health_state_insurance, 'None' %></span>
+                  <span>
+                  <%= radio_button_tag 'health_state_insurance', 'single', session[:district_insurance].present? ? session[:district_insurance]["health_state_insurance"] == "single" ? true : false : false %>
+                  <%= label_tag :health_state_insurance, 'Single'  %></span>
+                  <span>
+                  <%= radio_button_tag 'health_state_insurance', 'family', session[:district_insurance].present? ? session[:district_insurance]["health_state_insurance"] == "family" ? true : false : false %>
+                  <%= label_tag :health_state_insurance, 'Family'  %></span>
+                </center>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <p>Family Coverage</p>
+            </div>     
+          </div>
+          <div class="col-6">
+            <div class="form-group">
+              <%= text_field_tag :insurance_option, session[:district_insurance].present? ? session[:district_insurance]["insurance_option"].present? ? session[:district_insurance]["insurance_option"] : "" : "", :placeholder=> 'Insurance Option', :class => 'form-control' %>
+            </div>   
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <%= text_field_tag :hmp, session[:district_insurance].present? ? session[:district_insurance]["hmp"].present? ? session[:district_insurance]["hmp"] : "" : "", :placeholder=> 'HMO Carrier', :class => 'form-control' %>
+            </div>     
+          </div>
+          <div class="col-2">
+            <div class="form-group salary-inputs">
+              <div class="border-none">
+                <center>
+                  <span>
+                  <%= radio_button_tag 'hdp', 'hdp', session[:district_insurance].present? ? session[:district_insurance]["hdp"] == "hdp" ? true : false : false %>
+                  <%= label_tag :hdp, 'HDP' %></span>
+                </center>
+              </div>
+            </div>  
+          </div>
+          <div class="col-6">
+            <div class="form-group salary-inputs">
+              <div class="border-box">
+                <center>
+                  <span>
+                  <%= radio_button_tag 'family_coverage', 'employee', session[:district_insurance].present? ? session[:district_insurance]["family_coverage"] == "employee" ? true : false : false %>
+                  <%= label_tag :family_coverage, 'Employee' %></span>
+                  <span>
+                  <%= radio_button_tag 'family_coverage', 'spouse', session[:district_insurance].present? ? session[:district_insurance]["family_coverage"] == "spouse" ? true : false : false%>
+                  <%= label_tag :family_coverage, 'Spouse'  %></span>
+                  <span>
+                  <%= radio_button_tag 'family_coverage', 'child', session[:district_insurance].present? ? session[:district_insurance]["family_coverage"] == "child" ? true : false : false %>
+                  <%= label_tag :family_coverage, 'Child'  %></span>
+                </center>
+              </div>
+            </div> 
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="form-group">
+              <p>Did this employee gain tenure status?</p>  
+            </div>     
+          </div>
+          <div class="col-6">
+            <div class="form-group salary-inputs">
+              <div class="border-none">
+                <span>
+                <%= radio_button_tag 'tenure_status', 'yes', session[:district_insurance].present? ? session[:district_insurance]["tenure_status"] == "yes" ? true : false : false %>
+                <%= label_tag :tenure_status, 'Yes' %></span>
+                <span>
+                <%= radio_button_tag 'tenure_status', 'no', session[:district_insurance].present? ? session[:district_insurance]["tenure_status"] == "no" ? true : false : false %>
+                <%= label_tag :tenure_status, 'No'  %></span>
+              </div>
+            </div> 
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="field district-btn">
+              <center>
+                <%= submit_tag "Next", :class => "btn btn-success submit-btn" %>
+              </center>
+            </div>
+          </div>
+          <div class="col-6">
+             <div class="field district-btn">
+                <center>
+                  <%= submit_tag "NA/Next", :class => "btn btn-success submit-btn" %>
+                </center>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

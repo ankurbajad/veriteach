@@ -1,0 +1,186 @@
+<div class="row">
+  <div class="col-4">
+    <div class="form-wrapper">
+      <ul class="form-step-list">
+        <li>5/7 Complete
+          <div class="progress">
+            <div class="progress-bar progress-bar-striped bg-danger progress-bar-animated" role="progressbar" style="width: 70%" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </li>
+        <li>1. District Employee Info</li>
+        <li>2. Email verification</li>
+        <li>3. District Info</li>
+        <li>4. Employment info</li>
+        <li><b>5. Performance Reviews</b></li>
+        <li>6. Insurance</li>
+        <li>7. Acceptance/Submit</li>
+      </ul>  
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="form-wrapper review-wrapper">
+      <div class="panel-heading">Performance Reviews</div>
+      <p class="text-center sub-title">
+        Please enter information for reviews.<br>
+        Did employee receive an unsatisfactory, ineffective, or needs
+        development annual summative performance evaluation for any
+        year since July 1, 2000?
+      </p>
+      <%= form_tag districts_path, remote: true do %>
+        <div class="row justify-content-md-center">
+          <div class="col-6">
+            <div class="form-group salary-inputs">
+              <div class="border-box">
+                <%= hidden_field_tag :step, "fifth" %>
+                <center>
+                  <span>
+                  <%= radio_button_tag 'review', 'yes', session[:review].present? ? session[:review] == "yes" ? true : false : false %>
+                  <%= label_tag :review, 'Yes' %></span>
+                  <span>
+                  <%= radio_button_tag 'review', 'no', session[:review].present? ? session[:review] == "no" ? true : false : false %>
+                  <%= label_tag :review, 'No'  %></span>
+                </center>
+              </div>
+              <center><small>If yes indicate school year(s) and rating(s):</small></center>
+            </div>
+          </div>
+        </div>
+        </br>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <div class="form-icon"><i class="fa fa-graduation-cap"></i></div>
+                <%= select_tag "school_name1", options_for_select(["A", "B", "C"], session[:review_perf].present? ? session[:review_perf]["school_name1"].present? ? session[:review_perf]["school_name1"] : "" : ""), :class => 'form-control', :prompt => "School" %>
+              </div>  
+          </div>
+          <div class="col-2">
+            <div class="form-group">
+              <%= select_tag "school_rating1", options_for_select(["N", "S", "U"], session[:review_perf].present? ? session[:review_perf]["school_rating1"].present? ? session[:review_perf]["school_rating1"] : "" : ""), :class => 'form-control company_state select-box', :prompt => "Rating" %>
+              <span class="company_state_error"></span>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <div class="form-icon"><i class="fa fa-calendar"></i></div>
+              <%= text_field_tag :school_from1, session[:review_perf].present? ? session[:review_perf]["school_from1"].present? ? session[:review_perf]["school_from1"] : "" : "", :placeholder=> 'From', :class => 'form-control datepicker', required: true %>
+            </div>  
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <div class="form-icon"><i class="fa fa-calendar"></i></div>
+              <%= text_field_tag :school_to1, session[:review_perf].present? ? session[:review_perf]["school_to1"].present? ? session[:review_perf]["school_to1"] : "" : "", :placeholder=> 'To', :class => 'form-control datepicker' %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+                <div class="form-icon"><i class="fa fa-graduation-cap"></i></div>
+                <%= select_tag "school_name2", options_for_select(["A", "B", "C"], session[:review_perf].present? ? session[:review_perf]["school_name2"].present? ? session[:review_perf]["school_name2"] : "" : ""), :class => 'form-control', :prompt => "School" %>
+              </div>  
+          </div>
+          <div class="col-2">
+            <div class="form-group">
+              <%= select_tag "school_rating2", options_for_select(["N", "S", "U"], session[:review_perf].present? ? session[:review_perf]["school_rating2"].present? ? session[:review_perf]["school_rating2"] : "" : ""), :class => 'form-control company_state select-box', :prompt => "Rating" %>
+              <span class="company_state_error"></span>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <div class="form-icon"><i class="fa fa-calendar"></i></div>
+              <%= text_field_tag :school_from2, session[:review_perf].present? ? session[:review_perf]["school_from2"].present? ? session[:review_perf]["school_from2"] : "" : "", :placeholder=> 'From', :class => 'form-control datepicker' %>
+            </div>  
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <div class="form-icon"><i class="fa fa-calendar"></i></div>
+              <%= text_field_tag :school_to2, session[:review_perf].present? ? session[:review_perf]["school_to2"].present? ? session[:review_perf]["school_to2"] : "" : "", :placeholder=> 'To', :class => 'form-control datepicker' %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+                <div class="form-icon"><i class="fa fa-graduation-cap"></i></div>
+                <%= select_tag "school_name3", options_for_select(["A", "B", "C"], session[:review_perf].present? ? session[:review_perf]["school_name3"].present? ? session[:review_perf]["school_name3"] : "" : ""), :class => 'form-control', :prompt => "School" %>
+              </div>  
+          </div>
+          <div class="col-2">
+            <div class="form-group">
+              <%= select_tag "school_rating3", options_for_select(["N", "S", "U"], session[:review_perf].present? ? session[:review_perf]["school_rating3"].present? ? session[:review_perf]["school_rating3"] : "" : ""), :class => 'form-control company_state select-box', :prompt => "Rating" %>
+              <span class="company_state_error"></span>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <div class="form-icon"><i class="fa fa-calendar"></i></div>
+              <%= text_field_tag :school_from3, session[:review_perf].present? ? session[:review_perf]["school_from3"].present? ? session[:review_perf]["school_from3"] : "" : "", :placeholder=> 'From', :class => 'form-control datepicker' %>
+            </div>  
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <div class="form-icon"><i class="fa fa-calendar"></i></div>
+              <%= text_field_tag :school_to3, session[:review_perf].present? ? session[:review_perf]["school_to3"].present? ? session[:review_perf]["school_to3"] : "" : "", :placeholder=> 'To', :class => 'form-control datepicker' %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+                <div class="form-icon"><i class="fa fa-graduation-cap"></i></div>
+                <%= select_tag "school_name4", options_for_select(["A", "B", "C"], session[:review_perf].present? ? session[:review_perf]["school_name4"].present? ? session[:review_perf]["school_name4"] : "" : ""), :class => 'form-control', :prompt => "School" %>
+              </div>  
+          </div>
+          <div class="col-2">
+            <div class="form-group">
+              <%= select_tag "school_rating4", options_for_select(["N", "S", "U"], session[:review_perf].present? ? session[:review_perf]["school_rating4"].present? ? session[:review_perf]["school_rating4"] : "" : ""), :class => 'form-control company_state select-box', :prompt => "Rating" %>
+              <span class="company_state_error"></span>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <div class="form-icon"><i class="fa fa-calendar"></i></div>
+              <%= text_field_tag :school_from4, session[:review_perf].present? ? session[:review_perf]["school_from4"].present? ? session[:review_perf]["school_from4"] : "" : "", :placeholder=> 'From', :class => 'form-control datepicker' %>
+            </div>  
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <div class="form-icon"><i class="fa fa-calendar"></i></div>
+              <%= text_field_tag :school_to4, session[:review_perf].present? ? session[:review_perf]["school_to4"].present? ? session[:review_perf]["school_to4"] : "" : "", :placeholder=> 'To', :class => 'form-control datepicker' %>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <p>
+                <small>*Ratings</small>
+              </p>
+              <p>
+                <small>S ­ Satifactory</small>
+              </p>
+              <p>
+                <small>N ­ Needs Improvement</small>
+              </p>
+              <p>
+                <small>U ­ Unsatisfactory</small>
+              </p>
+            </div>
+          </div>
+          <div class="col-5">
+             <div class="field district-btn">
+                <center>
+                  <%= submit_tag "Next", :class => "btn btn-success submit-btn" %>
+                </center>
+              </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+</script>

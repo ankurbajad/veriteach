@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  school_name: MyString
+  school_rating: MyString
+  school_from: MyString
+  school_to: MyString
+  district_review_id: 1
+
+two:
+  school_name: MyString
+  school_rating: MyString
+  school_from: MyString
+  school_to: MyString
+  district_review_id: 1

@@ -45,10 +45,10 @@
           <b>
             <%= label_tag :salary_inclusion %> </b><br />
           <span>
-          <%= radio_button_tag 'salary_inclusion', 'yes' %>
+          <%= radio_button_tag 'salary_inclusion', 'yes', session[:employee].present? ? session[:employee]["salary_inclusion"] == "yes" ? true : false : false %>
           <%= label_tag :salary_inclusion, 'Yes' %></span>
           <span>
-          <%= radio_button_tag 'salary_inclusion', 'no', true %>
+          <%= radio_button_tag 'salary_inclusion', 'no', session[:employee].present? ? session[:employee]["salary_inclusion"] == "no" ? true : false : false %>
           <%= label_tag :salary_inclusion, 'No'  %></span>
         </div>
 
@@ -56,13 +56,13 @@
           <b>
             <%= label_tag :document_retrieval %></b> <br />
           <span>
-            <%= radio_button_tag 'document_retrieval', 'pick­up' %>
+            <%= radio_button_tag 'document_retrieval', 'pick­up', session[:employee].present? ? session[:employee]["document_retrieval"] == "pick­up" ? true : false : false %>
           <%= label_tag :document_retrieval, 'Pick­up' %></span>
           <span>
-            <%= radio_button_tag 'document_retrieval', 'email', :checked => true %>
+            <%= radio_button_tag 'document_retrieval', 'email', session[:employee].present? ? session[:employee]["document_retrieval"] == "email" ? true : false : false %>
           <%= label_tag :document_retrieval, 'Email' %></span>
           <span>
-            <%= radio_button_tag 'document_retrieval', 'mail' %>
+            <%= radio_button_tag 'document_retrieval', 'mail', session[:employee].present? ? session[:employee]["document_retrieval"] == "mail" ? true : false : false %>
           <%= label_tag :document_retrieval, 'Mail' %></span>
           <br />
         </div>

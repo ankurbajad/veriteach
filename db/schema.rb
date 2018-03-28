@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180327072144) do
+ActiveRecord::Schema.define(version: 20180328110518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,6 +45,73 @@ ActiveRecord::Schema.define(version: 20180327072144) do
     t.string "email_verify_code"
   end
 
+  create_table "district_employees", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "job_title"
+    t.string "phone_number"
+    t.string "email_verify_code"
+    t.string "electronic_signature"
+    t.integer "district_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "district_employments", force: :cascade do |t|
+    t.string "school_name"
+    t.string "school_nces"
+    t.text "school_street_address"
+    t.string "school_state"
+    t.string "school_city"
+    t.string "school_zipcode"
+    t.string "school_position"
+    t.string "school_grade"
+    t.string "school_subject"
+    t.string "school_date_service_from"
+    t.string "school_date_service_to"
+    t.string "school_contract_year"
+    t.string "school_employment_status"
+    t.string "school_hour_rate"
+    t.string "school_certificate_service"
+    t.string "school_reemployment"
+    t.integer "district_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "district_insurances", force: :cascade do |t|
+    t.string "insurance_day"
+    t.string "insurance_from"
+    t.string "insurance_to"
+    t.string "health_state_insurance"
+    t.string "insurance_option"
+    t.string "hmp"
+    t.string "hdp"
+    t.string "family_coverage"
+    t.string "tenure_status"
+    t.integer "district_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "district_review_performances", force: :cascade do |t|
+    t.string "school_name"
+    t.string "school_rating"
+    t.string "school_from"
+    t.string "school_to"
+    t.integer "district_review_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "district_reviews", force: :cascade do |t|
+    t.string "review"
+    t.integer "district_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "districts", force: :cascade do |t|
     t.string "name"
     t.string "nces"
@@ -59,6 +126,11 @@ ActiveRecord::Schema.define(version: 20180327072144) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "candidate_id"
+    t.string "institution_type"
+    t.string "regional_accrededation_agency"
+    t.string "state_of_accrededation"
+    t.string "accrededation_start"
+    t.string "accrededation_end"
   end
 
   create_table "employees", force: :cascade do |t|

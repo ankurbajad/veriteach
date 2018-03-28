@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :candidates
   resources :employees
   resources :companies
+  resources :districts
   root :to => "candidates#index"
 end
