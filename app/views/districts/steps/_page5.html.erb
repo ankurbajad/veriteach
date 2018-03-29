@@ -57,14 +57,14 @@
           </div>
           <div class="col-2">
             <div class="form-group">
-              <%= select_tag "school_rating1", options_for_select(["N", "S", "U"], session[:review_perf].present? ? session[:review_perf]["school_rating1"].present? ? session[:review_perf]["school_rating1"] : "" : ""), :class => 'form-control company_state select-box', :prompt => "Rating" %>
+              <%= select_tag "school_rating1", options_for_select(["N", "S", "U"], session[:review_perf].present? ? session[:review_perf]["school_rating1"].present? ? session[:review_perf]["school_rating1"] : "" : ""), :class => 'form-control company_state select-box', :prompt => "Rating", required: true %>
               <span class="company_state_error"></span>
             </div>
           </div>
           <div class="col-3">
             <div class="form-group">
               <div class="form-icon"><i class="fa fa-calendar"></i></div>
-              <%= text_field_tag :school_from1, session[:review_perf].present? ? session[:review_perf]["school_from1"].present? ? session[:review_perf]["school_from1"] : "" : "", :placeholder=> 'From', :class => 'form-control datepicker', required: true %>
+              <%= text_field_tag :school_from1, session[:review_perf].present? ? session[:review_perf]["school_from1"].present? ? session[:review_perf]["school_from1"] : "" : "", :placeholder=> 'From', :class => 'form-control datepicker' %>
             </div>  
           </div>
           <div class="col-3">

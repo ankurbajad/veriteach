@@ -4,6 +4,7 @@
   .form-container {
     padding: 50px 0px;
     background-color: #033076;
+    min-height: 87.2vh;
   }
   .form-wrapper{
     border: none;
@@ -249,4 +250,7 @@
   width: 50% !important;
   margin: 0 auto;
   text-align: center;
+}
+.employer-form-right .form-group .datepicker{
+  padding-left: 35px !important;
 }

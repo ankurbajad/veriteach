@@ -183,6 +183,30 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $('.datepicker').datepicker();
-    $('.add_nested_fields').click();
+    // $('.add_nested_fields').click();
   });
+</script>
+
+<script type="text/javascript">
+  // $(function(){
+    $(document).ready(function(){
+
+    var form_count = $('form .fields').length;
+
+    if(form_count > 0){
+      $("form .fields").attr('id', 'form' + form_count);
+    }
+
+    $(document).on('nested:fieldAdded', function(event){
+      var next_form_count = $('form .fields').length;
+      var panel_heading   = "Employer " + (next_form_count -1);
+      var previous_form   = next_form_count -1;
+      var accordian = $("#form" + previous_form ).find("input")[0].value
+
+      $(event.field[0]).attr('id', 'form' + next_form_count);
+      $('.sub-title').append('<div class="form-group form-custom-label" id="'+previous_form+'"><div class="row"><div class="col-md-3"><label>'+ panel_heading +'</label></div><div class="col-md-9"><div class="e-form-1" id="e-form-1"><i class="fa fa-caret-right toggle-arrow"></i><input type="text" name="fname" value="'+ accordian +'"  class="form-control" readonly><br></div></div></div></div>');
+      $('#form' + previous_form).slideUp(500);
+    });
+  
+    });
 </script>

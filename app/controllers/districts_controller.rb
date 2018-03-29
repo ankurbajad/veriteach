@@ -48,7 +48,9 @@ class DistrictsController < ApplicationController
       district_review = district.build_district_review(review: session[:review] )
       district_review.save
       [1, 2, 3, 4].each do |no|
-        district_performance = district_review.district_review_performances.create(school_name: session[:review_perf]["school_name#{no}"], school_rating: session[:review_perf]["school_rating#{no}"], school_from: session[:review_perf]["school_from#{no}"], school_to: session[:review_perf]["school_to#{no}"])
+        if session[:review_perf]["school_name#{no}"].present?
+          district_performance = district_review.district_review_performances.create(school_name: session[:review_perf]["school_name#{no}"], school_rating: session[:review_perf]["school_rating#{no}"], school_from: session[:review_perf]["school_from#{no}"], school_to: session[:review_perf]["school_to#{no}"])
+        end
       end
       session[:district_params]["district_employments_attributes"].each do |key, value|
         district.district_employments.create(value)
@@ -61,8 +63,7 @@ class DistrictsController < ApplicationController
       session[:district_insurance] = ""
       session[:district_electronic_signature] = ""
       session[:district_params] = ""
-      @step = 7
-      respond_to :js
+      redirect_to new_district_path
     end
   end
 
