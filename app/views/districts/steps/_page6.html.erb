@@ -25,7 +25,9 @@
       </p>
       <p class="text-center sub-title">(if applicable)</p>
       
-      <%= form_tag districts_path, remote: true do %>
+      <%#= form_tag districts_path, remote: true do %>
+      <%= form_for @district, url: districts_path, remote: true do |f| %>
+        <%= f.hidden_field :name %>
         <div class="row justify-content-md-center">
           <div class="col-12">
             <div class="form-group">
@@ -180,3 +182,9 @@
     </div>
   </div>
 </div>
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+    $('.add_nested_fields').click();
+  });
+</script>

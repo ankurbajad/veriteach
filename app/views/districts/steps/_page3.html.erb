@@ -21,7 +21,9 @@
     <div class="form-wrapper">
       <div class="panel-heading">District Information</div>
       <p class="text-center sub-title">Please enter information for district.</p>
-      <%= form_tag districts_path, remote: true do %>
+      <%#= form_tag districts_path, remote: true do %>
+      <%= form_for @district, url: districts_path, remote: true do |f| %>
+        <%= f.hidden_field :name %>
         <div class="row">
           <div class="col-6">
             <div class="district-form-container">

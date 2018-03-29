@@ -21,154 +21,160 @@
     <div class="form-wrapper">
       <div class="panel-heading">Employer Info</div>
       <p class="text-center sub-title">Please enter information for employee.</p>
-      <%= form_tag districts_path, remote: true do %>
-        <div class="row">
-          <div class="col-6">
-            <div class="district-form-container">
-              <div class="form-group">
-                <div class="form-icon"><i class="fa fa-building"></i></div>
-                <%= hidden_field_tag :step, "forth" %>
-                <%= text_field_tag :first_name,  "", :placeholder=> 'School or Institution', :class => 'form-control company_name' %>
-              </div>
-
-              <div class="form-group">
-                <div class="form-icon"><i class="fa fa-list-ol"></i></div>
-                <%= text_field_tag :last_name, "", :placeholder=> '*NCES Number', :class => 'form-control company_contact_name' %>
-              </div>
-
-              <div class="form-group">
-                <div class="form-icon"><i class="fa fa-phone"></i></div>
-                <%= text_field_tag :job_title,"", :placeholder=> '*School Street Address', :class => 'form-control company_email' %>
-              </div>
-
-              <div class="form-group">
-                <div class="form-icon"><i class="fa fa-map-marker"></i></div>
-                <%= number_field_tag :phone_number, "", :placeholder=> '*Schools State', :class => 'form-control company_zip_code' %>
-                <span class="company_zip_code_error"></span>
-              </div>
-              <div class="form-group">
-                <div class="form-icon"><i class="fa fa-map-marker"></i></div>
-                <%= number_field_tag :phone_number, "", :placeholder=> '*Schools City', :class => 'form-control company_zip_code' %>
-                <span class="company_zip_code_error"></span>
-              </div>
-              <div class="form-group">
-                <div class="form-icon"><i class="fa fa-list-alt"></i></div>
-                <%= number_field_tag :phone_number, "", :placeholder=> '*Schools Zip Code', :class => 'form-control company_zip_code' %>
-                <span class="company_zip_code_error"></span>
-              </div>
-              <center><small>*Auto populate</small></center>
-            </div>   
-          </div>
-          <div class="col-6">
-            <div class="district-form-container employer-form-right">
-              <div class="form-group">
-                <%= number_field_tag :phone_number, "", :placeholder=> 'Position', :class => 'form-control' %>
-              </div>
-              <div class="form-group">
-                <div class="row">
-                  <div class="col-6">
-                    <%= number_field_tag :phone_number, "", :placeholder=> 'Grade', :class => 'form-control' %>
-                  </div>
-                  <div class="col-6">
-                    <%= number_field_tag :phone_number, "", :placeholder=> 'Subject', :class => 'form-control' %>
-                  </div>
+      <%= nested_form_for(build_district(@district), remote: true) do |f| %>
+      <%#= nested_form_for @district, remote: true do |f| %>
+        <%= hidden_field_tag :step, "forth" %>
+        <%= f.fields_for :district_employments do |cf| %>
+          <div class="row">
+            <div class="col-6">
+              <div class="district-form-container">
+                <div class="form-group">
+                  <div class="form-icon"><i class="fa fa-building"></i></div>
+                  
+                  <%= cf.text_field :school_name, :placeholder=> 'School or Institution', :class => 'form-control' %>
                 </div>
-              </div>
-              <div class="border-box form-group">
-                <p class="sub-title"><center>Dates of service</center></p>
+
+                <div class="form-group">
+                  <div class="form-icon"><i class="fa fa-list-ol"></i></div>
+                  <%= cf.text_field :school_nces, :placeholder=> '*NCES Number', :class => 'form-control' %>
+                </div>
+
+                <div class="form-group">
+                  <div class="form-icon"><i class="fa fa-phone"></i></div>
+                  <%= cf.text_field :school_street_address, :placeholder=> '*School Street Address', :class => 'form-control' %>
+                </div>
+
+                <div class="form-group">
+                  <div class="form-icon"><i class="fa fa-map-marker"></i></div>
+                  <%= cf.text_field :school_state, :placeholder=> '*Schools State', :class => 'form-control' %>
+                </div>
+                <div class="form-group">
+                  <div class="form-icon"><i class="fa fa-map-marker"></i></div>
+                  <%= cf.text_field :school_city, :placeholder=> '*Schools City', :class => 'form-control' %>
+                </div>
+                <div class="form-group">
+                  <div class="form-icon"><i class="fa fa-list-alt"></i></div>
+                  <%= cf.number_field :school_zipcode, :placeholder=> '*Schools Zip Code', :class => 'form-control' %>
+                </div>
+                <center><small>*Auto populate</small></center>
+              </div>   
+            </div>
+            <div class="col-6">
+              <div class="district-form-container employer-form-right">
+                <div class="form-group">
+                  <%= cf.text_field :school_position, :placeholder=> 'Position', :class => 'form-control' %>
+                </div>
+                <div class="form-group">
                   <div class="row">
                     <div class="col-6">
-                      <div class="form-group">
-                        <div class="form-icon"><i class="fa fa-calendar"></i></div>
-                        <%= text_field_tag :one, session[:district].present? ? session[:district]["accrededation_end"].present? ? session[:district]["accrededation_end"] : "" : "", :placeholder=> 'To', :class => 'form-control datepicker' %>
-                      </div>  
+                      <%= cf.text_field :school_grade, :placeholder=> 'Grade', :class => 'form-control' %>
                     </div>
                     <div class="col-6">
-                      <div class="form-group">
-                        <div class="form-icon"><i class="fa fa-calendar"></i></div>
-                        <%= text_field_tag :two, session[:district].present? ? session[:district]["accrededation_end"].present? ? session[:district]["accrededation_end"] : "" : "", :placeholder=> 'To', :class => 'form-control datepicker' %>
-                      </div>  
+                      <%= cf.text_field :school_subject, :placeholder=> 'Subject', :class => 'form-control' %>
                     </div>
-                  </div>
-              </div>
-
-              <div class="border-box form-group">
-                <center>Days in Full Contract Year</center>
-                  <div class="row">
-                    <div class="col">
-                      <div class="form-group">
-                        <center><%= number_field_tag :phone_number, "", :placeholder=> '000', :class => 'form-control small-input' %> </center>
-                      </div>  
-                    </div>
-                  </div>
-              </div>
-
-              <div class="border-box form-group">
-                <center>Employment Status</center>
-                <div class="form-group salary-inputs">
-                  <div class="border-box">
-                    <center>
-                      <span>
-                      <%= radio_button_tag 'salary_inclusion', 'yes' %>
-                      <%= label_tag :salary_inclusion, 'Fulltime' %></span>
-                      <span>
-                      <%= radio_button_tag 'salary_inclusion', 'no', true %>
-                      <%= label_tag :salary_inclusion, 'Part time'  %></span>
-                      
-                    </center>
                   </div>
                 </div>
-              </div>
-              <div class="border-box form-group">
-                <center>Days in Full Contract Year</center>
-                  <div class="row">
-                    <div class="col">
-                      <div class="form-group">
-                        <center><%= number_field_tag :phone_number, "", :placeholder=> '000', :class => 'form-control small-input' %> </center>
-                      </div>  
+                <div class="border-box form-group">
+                  <p class="sub-title"><center>Dates of service</center></p>
+                    <div class="row">
+                      <div class="col-6">
+                        <div class="form-group">
+                          <div class="form-icon"><i class="fa fa-calendar"></i></div>
+                          <%= cf.text_field :school_date_service_from, :placeholder=> 'From', :class => 'form-control datepicker' %>
+                        </div>  
+                      </div>
+                      <div class="col-6">
+                        <div class="form-group">
+                          <div class="form-icon"><i class="fa fa-calendar"></i></div>
+                          <%= cf.text_field :school_date_service_to, :placeholder=> 'To', :class => 'form-control datepicker' %>
+                        </div>  
+                      </div>
+                    </div>
+                </div>
+
+                <div class="border-box form-group">
+                  <center>Days in Full Contract Year</center>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <center><%= cf.number_field :school_contract_year, :placeholder=> '000', :class => 'form-control small-input' %> </center>
+                        </div>  
+                      </div>
+                    </div>
+                </div>
+
+                <div class="border-box form-group">
+                  <center>Employment Status</center>
+                  <div class="form-group salary-inputs">
+                    <div class="border-box">
+                      <center>
+                        <span>
+                        <%= cf.radio_button 'school_employment_status', 'yes' %>
+                        <%= cf.label :school_employment_status, 'Fulltime' %></span>
+                        <span>
+                        <%= cf.radio_button 'school_employment_status', 'no', :checked => true%>
+                        <%= cf.label :school_employment_status, 'Part time'  %></span>
+                        
+                      </center>
                     </div>
                   </div>
-              </div>
-              <div class="border-box form-group">
-                <center>Was Certificate held at time of service?</center>
-                <div class="form-group salary-inputs">
-                  <div class="border-box">
-                    <center>
-                      <span>
-                      <%= radio_button_tag 'salary_inclusion', 'yes' %>
-                      <%= label_tag :salary_inclusion, 'Yes' %></span>
-                      <span>
-                      <%= radio_button_tag 'salary_inclusion', 'no', true %>
-                      <%= label_tag :salary_inclusion, 'No'  %></span>
-                      
-                    </center>
+                </div>
+                <div class="border-box form-group">
+                  <center>Hours Per Day</center>
+                    <div class="row">
+                      <div class="col">
+                        <div class="form-group">
+                          <center><%= cf.number_field :school_hour_rate, :placeholder=> '000', :class => 'form-control small-input' %> </center>
+                        </div>  
+                      </div>
+                    </div>
+                </div>
+                <div class="border-box form-group">
+                  <center>Was Certificate held at time of service?</center>
+                  <div class="form-group salary-inputs">
+                    <div class="border-box">
+                      <center>
+                        <span>
+                        <%= cf.radio_button 'school_certificate_service', 'yes' %>
+                        <%= cf.label :school_certificate_service, 'Yes' %></span>
+                        <span>
+                        <%= cf.radio_button 'school_certificate_service', 'no', :checked => true %>
+                        <%= cf.label :school_certificate_service, 'No'  %></span>
+                        
+                      </center>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="border-box form-group">
-                <center>Eligible for immediate re­employment</center>
-                <div class="form-group salary-inputs">
-                  <div class="border-box">
-                    <center>
-                      <span>
-                      <%= radio_button_tag 'salary_inclusion', 'yes' %>
-                      <%= label_tag :salary_inclusion, 'Yes' %></span>
-                      <span>
-                      <%= radio_button_tag 'salary_inclusion', 'no', true %>
-                      <%= label_tag :salary_inclusion, 'No'  %></span>
-                      
-                    </center>
+                <div class="border-box form-group">
+                  <center>Eligible for immediate re­employment</center>
+                  <div class="form-group salary-inputs">
+                    <div class="border-box">
+                      <center>
+                        <span>
+                        <%= cf.radio_button 'school_reemployment', 'yes' %>
+                        <%= cf.label :school_reemployment, 'Yes' %></span>
+                        <span>
+                        <%= cf.radio_button 'school_reemployment', 'no', :checked => true %>
+                        <%= cf.label :school_reemployment, 'No'  %></span>
+                        
+                      </center>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="clearfix"></div>
-          <div class="field district-btn">
-            <center>
-              <%= submit_tag "Next", :class => "btn btn-success submit-btn" %>
-            </center>
-          </div>
+        <% end %>
+        <p>
+          <%= f.link_to_add :district_employments do %>
+            <i class="fa fa-plus-circle add-user"><span>Add Employment</span></i>
+          <% end %>  
+        </p>
+        <div class="clearfix"></div>
+        <div class="field district-btn">
+          <center>
+            <%= f.submit "Next", :class => "btn btn-success submit-btn" %>
+          </center>
         </div>
       <% end %>
     </div>
@@ -177,5 +183,6 @@
 <script type="text/javascript">
   $(document).ready(function(){
     $('.datepicker').datepicker();
+    $('.add_nested_fields').click();
   });
 </script>

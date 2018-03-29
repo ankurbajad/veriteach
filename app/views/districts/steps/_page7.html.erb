@@ -22,7 +22,9 @@
       <div class="panel-heading">TERMS OF ACCEPTANCE AND SIGNATURE</div>
       </br>
       <p class="text-center sub-title">I, the [applicant, requestor, etc.] for this verification request, warrant the truthfulness of the information provided in this application.</p>
-      <%= form_tag districts_path, remote: true do %>
+      <%#= form_tag districts_path, remote: true do %>
+      <%= form_for @district, url: districts_path, remote: true do |f| %>
+        <%= f.hidden_field :name %>
         <div class="form-group">
           <div class="row">
             <div class="col-md-5">

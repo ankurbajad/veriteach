@@ -20,7 +20,9 @@
   <div class="col-6">
     <div class="form-wrapper">
       <div class="panel-heading">Greetings, lets start with some very basic information about you!</div>
-      <%= form_tag districts_path, remote: true do %>
+      <%= form_for @district, url: districts_path, remote: true do |f| %>
+        <%= f.hidden_field :name %>
+      <%#= form_tag districts_path, remote: true do %>
         <div class="district-form-container">
           <div class="form-group">
             <div class="form-icon"><i class="fa fa-building"></i></div>
