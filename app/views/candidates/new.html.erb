@@ -27,12 +27,12 @@
     $('#form' + previous_form).slideUp(500);
   });
 
-  // $(document).on('click', '.form-custom-label', function(){
-  //   var current_obeject_value = parseInt($(this).attr('id'));
-  //   var next_form = $('form .fields').length;
-  //   $('#form' + next_form).hide();
-  //   $('#form' +  $(this).attr('id')).slideDown(500);
-  // });
+  $(document).on('click', '.form-custom-label', function(){
+    var current_obeject_value = parseInt($(this).attr('id'));
+    var next_form = $('form .fields').length;
+    $('#form' + next_form).hide();
+    $('#form' +  $(this).attr('id')).slideDown(500);
+  });
 
   $('.step_0').click(function() {
     var candidate_name = $('#candidate_name').val();
